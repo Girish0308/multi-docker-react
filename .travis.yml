@@ -5,6 +5,7 @@ services:
 before_install:
   - docker build -t girish0308/react-test -f ./client/Dockerfile.dev ./client
 
+
 script:
   - docker run girish0308/react-test npm test -- --coverage
 
