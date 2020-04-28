@@ -21,3 +21,16 @@ after_success:
   - docker push girish0308/multi-nginx:v1
   - docker push girish0308/multi-server:v1
   - docker push girish0308/multi-worker:v1
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker-app
+  env: MultiDockerApp-env
+  bucket_name: elasticbeanstalk-us-east-2-478964138354
+  bucket_path: multi-docker-app
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
