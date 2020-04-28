@@ -9,14 +9,14 @@ script:
   - docker run girish0308/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t girish0308/multi-client ./client
-  - docker build -t girish0308/multi-nginx ./nginx
-  - docker build -t girish0308/multi-server ./server
-  - docker build -t girish0308/multi-worker ./worker
+  - docker build -t girish0308/multi-client:v1 ./client
+  - docker build -t girish0308/multi-nginx:v1 ./nginx
+  - docker build -t girish0308/multi-server:v1 ./server
+  - docker build -t girish0308/multi-worker:v1 ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push girish0308/multi-client
-  - docker push girish0308/multi-nginx
-  - docker push girish0308/multi-server
-  - docker push girish0308/multi-worker
+  - docker push girish0308/multi-client:v1
+  - docker push girish0308/multi-nginx:v1
+  - docker push girish0308/multi-server:v1
+  - docker push girish0308/multi-worker:v1
